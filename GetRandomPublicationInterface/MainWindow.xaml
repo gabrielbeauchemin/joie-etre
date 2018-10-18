@@ -1,0 +1,88 @@
+﻿<Window x:Class="GetRandomPublicationInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetRandomPublicationInterface"
+        mc:Ignorable="d"
+        Title="La Joie D'être" Height="700" Width="1050"
+        d:DataContext="{d:DesignData MainWindow}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="75*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock  Grid.Row="0" FontWeight="Bold" Text="Générateur de publications &#xD;&#xA;du groupe Facebook La Joie d'être" FontSize="24" TextAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Content="Choisir&#xD;&#xA; aléatoirement" Margin="10,0,10,20" FontWeight="Bold" FontSize="14" Click="GenerateRandomPublication" Padding="5,5"/>
+            <Button Content="Choisir selon&#xD;&#xA; mot-clé" Margin="10,0,10,20" FontWeight="Bold" FontSize="14" Click="GenerateKeyWord" Padding="5,5"  />
+            <Button Content="Télécharger publications&#xD;&#xA; format html" Margin="10,0,10,20" FontWeight="Bold" FontSize="14" Click="GeneratePublicationsHtml" Padding="5,5" HorizontalContentAlignment="Stretch"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,1,1,1" Background="Transparent" />
+            
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" >
+                    <Label Content="Date de publication:" FontWeight="Bold" Margin="0" FontSize="20"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding PublicationDate}" Margin="0,4,0,0" FontSize="20"/>
+                </StackPanel>
+
+                
+                <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                    <Label Content="Suite article:" FontWeight="Bold" Margin="0" FontSize="20"/>
+                    <TextBlock>
+                        <Hyperlink NavigateUri="{Binding PublicationLink}" RequestNavigate="PublicationHyperLink">
+                            <TextBlock  Text="{Binding PublicationLink}"  FontSize="20"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Label  Content="Publication:" FontWeight="Bold" FontSize="20"/>
+                    <Button Content="Copier" Click="CopyPublication" Margin="5">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PublicationContent, Mode=OneWay}" Value="">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button >
+                </StackPanel>
+                <ScrollViewer Grid.Row="3" Margin="0,0,6,0">
+                    <TextBlock Text="{Binding PublicationContent, Mode=OneWay}" FontSize="20" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="10,0,0,0" />
+                </ScrollViewer>
+
+            </Grid>
+            
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,1,1" Background="Transparent" />
+            <StackPanel  Grid.Column = "1" Orientation="Vertical" >
+                <Label Content="Image:" FontWeight="Bold" FontSize="20"/>
+                <Image Source="{Binding PictureLink}" Stretch="Fill" />
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+
+</Window>

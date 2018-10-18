@@ -1,0 +1,39 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>b0706e91-2d5a-4a33-be70-ebe0e733b89a</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Installer.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>Installer</AssemblyName>
+    <Name>Installer</Name>
+    <RootNamespace>Installer</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="Installer.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GetRandomPublicationInterface\GetRandomPublicationInterface.csproj">
+      <Name>GetRandomPublicationInterface</Name>
+      <Project>{50002571-e551-471d-bf16-334dd883bc64}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\GroupPublicationsParser\GroupPublicationsParser.csproj">
+      <Name>GroupPublicationsParser</Name>
+      <Project>{abce62c8-d9b4-4ded-ac3a-d6b7ee68ff42}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" />
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' == ''" Project="$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets" />
+</Project>
