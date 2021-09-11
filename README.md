@@ -15,15 +15,15 @@ Il s'agit d'une interface WPF pour choisir de manière aléatoire ou par mot-cl�
 **Utilisation**
 -----------------
 
--Pour simplement installer l'application, télécharger ici: https://www.dropbox.com/s/8agt0bh1ntak1f2/InstallationAppJoieEtre.msi?dl=0
+- Pour simplement installer l'application, télécharger ici: https://www.dropbox.com/s/8agt0bh1ntak1f2/InstallationAppJoieEtre.msi?dl=0
 
--Sinon cloner le projet.
+- Sinon cloner le projet.
 
 **À faire**
 --------------------
 
--Modifier le sous projet GroupPublicationParser pour utiliser l'API Facebook pour plus facilement mettre à jour l'application.
+- Modifier le sous projet GroupPublicationParser pour utiliser l'API Facebook pour plus facilement mettre à jour l'application.
 
--Permettre de montrer et naviguer à travers tous les résultats de la recherche par mot-clé.
+- Permettre de montrer et naviguer à travers tous les résultats de la recherche par mot-clé.
 
--Porter le projet sur Linux et Android en utilisant React Native ou QT pour l'interface ?
+- Porter le projet sur Linux et Android en utilisant React Native ou QT pour l'interface ?
